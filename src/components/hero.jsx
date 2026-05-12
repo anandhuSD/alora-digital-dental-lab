@@ -20,7 +20,7 @@
 
 //   return (
 //     <div className="relative min-h-screen overflow-hidden bg-black">
-
+      
 //       {/* PARALLAX BACKGROUND */}
 //       <div
 //         ref={bgRef}
@@ -33,7 +33,7 @@
 
 //       {/* CONTENT */}
 //       <div className="relative flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6">
-
+        
 //         {/* MAIN HEADING */}
 //         <h1
 //           data-aos="fade-up"
@@ -53,12 +53,12 @@
 
 //         {/* BUTTON */}
 //         <a
-//           href="#contact"
+//           href="/doctorsportal"
 //           data-aos="zoom-in"
 //           data-aos-delay="400"
 //           className="mt-5 px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base text-white border border-white rounded-lg shadow-lg hover:bg-white hover:text-black transition duration-300"
 //         >
-//           contact
+//           Doctors Portal
 //         </a>
 
 //       </div>
@@ -69,6 +69,7 @@
 // export default Hero;
 
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 function Hero() {
   const bgRef = useRef();
@@ -121,14 +122,14 @@ function Hero() {
         </h2>
 
         {/* BUTTON */}
-        <a
-          href="/doctorsportal"
+        <Link
+          to="/doctorsportal"
           data-aos="zoom-in"
           data-aos-delay="400"
           className="mt-5 px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base text-white border border-white rounded-lg shadow-lg hover:bg-white hover:text-black transition duration-300"
         >
           Doctors Portal
-        </a>
+        </Link>
 
       </div>
     </div>

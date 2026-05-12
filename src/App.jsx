@@ -128,35 +128,48 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+// Components
 import Navigation from "./components/navigation";
-
-// scroll components
 import Hero from "./components/hero";
 import Logo from "./components/logo";
 import About from "./components/about";
 import Wedo from "./components/wedo";
 import Contact from "./components/contact";
+import Info from "./components/info";
 
-// pages
+// Pages
 import Gallery from "./pages/gallery";
 import Doctorsportal from "./pages/doctorsportal";
-import Info from "./components/info";
 import Termscond from "./pages/termscond";
 
 
-// ✅ Scroll handler
+// ✅ Smooth Scroll Handler
 function ScrollToSection() {
   const location = useLocation();
 
   useEffect(() => {
     if (location.hash) {
-      const el = document.getElementById(location.hash.replace("#", ""));
+      const el = document.getElementById(
+        location.hash.replace("#", "")
+      );
+
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => {
+          el.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }, 100);
       }
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   }, [location]);
 
@@ -164,11 +177,10 @@ function ScrollToSection() {
 }
 
 
-// ✅ Navbar ONLY on Home Page
+// ✅ Navbar only on Home Page
 function ConditionalNavbar() {
   const location = useLocation();
 
-  // Show navbar ONLY for "/"
   if (location.pathname !== "/") {
     return null;
   }
@@ -192,6 +204,7 @@ function HomePage() {
 }
 
 
+// ✅ Main App
 function App() {
   useEffect(() => {
     AOS.init({
@@ -204,10 +217,10 @@ function App() {
     <Router>
       <ScrollToSection />
 
-      {/* ✅ Navbar only on Home */}
+      {/* Navbar */}
       <ConditionalNavbar />
 
-      {/* ✅ Routes */}
+      {/* Routes */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/gallery" element={<Gallery />} />
